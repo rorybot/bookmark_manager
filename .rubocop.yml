@@ -434,11 +434,11 @@ Style/UnneededCapitalW:
 Style/UnneededInterpolation:
   Enabled: false
 Style/UnneededPercentQ:
-  Enabled: false
+  Enabled: true
 Style/VariableInterpolation:
   Enabled: false
 Style/VariableNumber:
-  Enabled: false
+  Enabled: true
 Style/WhenThen:
   Enabled: false
 Style/WhileUntilDo:

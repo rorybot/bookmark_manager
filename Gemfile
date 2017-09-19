@@ -5,10 +5,10 @@ ruby '2.4.0'
 gem 'data_mapper'
 gem 'dm-postgres-adapter'
 gem 'json', '~>1.8.6'
+gem 'pg'
 gem 'rake'
 gem 'shotgun'
 gem 'sinatra'
-gem 'pg'
 
 group :test do
   gem 'capybara'

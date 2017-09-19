@@ -7,7 +7,7 @@ feature 'When creating links' do
     visit '/links/new'
     fill_in :link_name, with: 'Infogalactic News'
     fill_in :url_address, with: 'new.infogalactic.com'
-    click_button 'Submit'
+    click_button 'Create link'
     visit '/links'
 
     within 'ul#links' do

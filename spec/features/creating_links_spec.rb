@@ -1,8 +1,8 @@
 
-feature 'Creating links' do
 
-  scenario 'I can create links on the links page' do
+feature 'When creating links' do
 
+  scenario 'I can see my new links on the links page' do
 
     visit '/links/new'
     fill_in :link_name, with: 'Infogalactic News'
@@ -10,9 +10,10 @@ feature 'Creating links' do
     click_button 'Submit'
     visit '/links'
 
-
     within 'ul#links' do
       expect(page).to have_content('Infogalactic News')
     end
+
   end
+
 end

@@ -1,10 +1,13 @@
 require 'data_mapper'
 require 'dm-postgres-adapter'
 require 'dm-migrations'
+require 'pg'
 
 # require_relative 'database_setup'
 
-DataMapper.setup(:default, "postgres://localhost/bookmark_manager")
+
+DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/bookmark_manager_#{ENV['RACK_ENV']}")
+
 
 class Link
 

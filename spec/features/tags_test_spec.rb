@@ -18,10 +18,9 @@ feature 'Adding tags' do
     fill_in 'link_name', with: 'Wikileaks'
     fill_in 'tags', with: 'secrets!, gossip, russia'
     click_button 'Create link'
-    p $thing
     link = Link.first
-    p $thing
     p link
+    expect(link.tags.map(&:name)).to include('russia')
     expect(link.tags.map(&:name)).to include('secrets!')
   end
 

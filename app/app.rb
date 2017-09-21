@@ -1,4 +1,4 @@
-ENV["RACK_ENV"] ||= "_development"
+ENV["RACK_ENV"] ||= "development"
 
 require 'sinatra/base'
 require_relative 'database_setup'
@@ -17,9 +17,13 @@ class BookmarkManager < Sinatra::Base
   post '/links' do
     link = Link.new(url: params[:url_address],
                 title: params[:link_name])
-    tag = Tag.new(name: params[:tags])
-    link.tags << tag
-    link.save
+
+    tags_array = params[:tags]
+    $thing = tags_array.split(',').each{|separate_tag| tag = Tag.first_or_create(name: separate_tag)
+      link.tags << tag
+    }
+
+          link.save
     redirect to('/links')
   end
 

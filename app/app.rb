@@ -47,7 +47,7 @@ class BookmarkManager < Sinatra::Base
 
   post '/signup_new' do
     user = User.create(email_address: params[:email_address],
-              password: params[:password])
+              password_to_be_hashed: params[:password])
     session[:user_id] = user.id
     session[:pasword] = user.password_digest
         redirect to('/links')

@@ -9,8 +9,8 @@ class User
   property(:password_digest, Text)
 
 
-  def password=(password)
-    self.password_digest = BCrypt::Password.create(password)
+  def password_to_be_hashed=(password_to_be_hashed)
+    self.password_digest = BCrypt::Password.create(password_to_be_hashed)
   end
 
 

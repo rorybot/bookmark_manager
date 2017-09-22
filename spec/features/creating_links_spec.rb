@@ -1,5 +1,3 @@
-
-
 feature 'When creating links' do
 
   scenario 'I can see my new links on the links page' do

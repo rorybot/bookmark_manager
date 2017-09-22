@@ -1,6 +1,10 @@
+require 'bcrypt'
+
 class User
 
-  require 'bcrypt'
+  attr_reader :password
+  attr_accessor :password_confirmation
+
 
   include DataMapper::Resource
 
@@ -9,9 +13,11 @@ class User
   property(:password_digest, Text)
 
 
-  def password_to_be_hashed=(password_to_be_hashed)
-    self.password_digest = BCrypt::Password.create(password_to_be_hashed)
-  end
+  validates_confirmation_of :password
 
+  def password=(password)
+    @password = password
+    self.password_digest = BCrypt::Password.create(password)
+  end
 
 end

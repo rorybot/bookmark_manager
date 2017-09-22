@@ -5,14 +5,14 @@ require_relative 'database_setup'
 
 class BookmarkManager < Sinatra::Base
 
- enable :sessions
- set :session_secret, 'super secret'
+  enable :sessions
+  set :session_secret, 'super secret'
 
- helpers do
-   def current_user
-     @current_user ||= User.get(session[:user_id])
-   end
- end
+  helpers do
+    def current_user
+      @current_user ||= User.get(session[:user_id])
+    end
+  end
 
   get '/links' do
     @links = Link.all
@@ -24,12 +24,12 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/links' do
-    link = Link.new(url: params[:url_address],
+    link = Link.create(url: params[:url_address],
                     title: params[:link_name])
 
     tags_array = params[:tags]
 
-    Tag.new.input_tags(link, tags_array)
+    Tag.first_or_create.input_tags(link, tags_array)
 
     link.save
     redirect to('/links')
@@ -47,10 +47,10 @@ class BookmarkManager < Sinatra::Base
 
   post '/signup_new' do
     user = User.create(email_address: params[:email_address],
-              password_to_be_hashed: params[:password])
+              password: params[:password],
+              password_confirmation: params[:password_confirmation])
     session[:user_id] = user.id
-    session[:pasword] = user.password_digest
-        redirect to('/links')
+    redirect to('/links')
   end
 
   run! if app_file == $0

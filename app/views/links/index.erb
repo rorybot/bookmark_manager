@@ -1,5 +1,13 @@
 
-<h1> Links </h1>
+<h1>
+
+  <% if current_user %>
+  Welcome to the Links page, <%=current_user.email_address%>
+  <% else %> Links
+  <% end %>
+
+</h1>
+
 
 <ul id='links'>
   <% @links.each do |link| %>

@@ -2,7 +2,7 @@
 <h1>
 
   <% if current_user %>
-  Welcome to the Links page, <%=current_user.email_address%>
+  Welcome to the Links page, <%=current_user.email_address%>! Your password is: <%=current_user.password_digest%>?! Congratulations!
   <% else %> Links
   <% end %>
 
